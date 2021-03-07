@@ -65,7 +65,7 @@ export class ContextProvider extends Component {
             })
     }
     fetchMovieDetail = async (url, imgIndex) => {
-        this.setState({ movieDetail: { characters: [] }, imgIndex: null });
+        this.setState({ movieDetail: { characters: [],opening_crawl:'' }, imgIndex: null });
         await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json',

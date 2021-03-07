@@ -23,6 +23,7 @@ function MovieDetail({ navigation }) {
   //movieDetail
   const { movieDetail, fetchCharacterDetail, charList } = useContext(GlobalContext);
   let film = []
+  const desc = movieDetail !== undefined ? movieDetail.opening_crawl.replace(/(\r\n|\n|\r)/gm, "") : null
   if (movieDetail !== undefined) {
 
     film = [
@@ -51,10 +52,13 @@ function MovieDetail({ navigation }) {
               </View>
             </ScrollView>
           </View>
+          <View style={{flex:1}} >
+
           <Text style={{ fontWeight: '700', color: '#dcdcdc' }}>Opening Crawl</Text>
-          <Text style={{ color: '#999', fontSize: 16, marginTop: 10 }}>
-            {movieDetail.opening_crawl}
+          <Text style={{ color: '#999', fontSize: 16, marginTop: 10,textStyle: 'justify'}}>
+            {desc}
           </Text>
+          </View>
           <TitleCard items={movieDetail.characters} navigation={navigation} itemDetailFunc={fetchCharacterDetail} itemImgList={charList} title={"Character"}/>
         </ScrollView>
       </View>
